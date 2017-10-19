@@ -1,6 +1,6 @@
-#include <cstddef>
-#include <cstdint>
-#include <cstring>
+#include <stddef.h>
+#include <stdint.h>
+#include <string.h>
 
 enum vga_color
 {
