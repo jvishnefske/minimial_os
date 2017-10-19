@@ -1,10 +1,12 @@
 language: c++
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y nasm grub-common
+  - sudo apt-get install -y nasm
 script:
   - nasm -f elf boot.asm -o boot.o
-  - g++ -c kernel.cpp -o kernel.o -ffreestanding -fno-exceptions -fno-rtti
+  - g++ -c main.cc -o kernel.o -ffreestanding -fno-exceptions -fno-rtti
   - gcc boot.o kernel.o -T linker.ld -o image/kern
 after_sucess:
   - grub-mkrescue image --output=kern.iso
+  - ls -l
+  - ls -l image
